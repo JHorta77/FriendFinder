@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="text-center">
+                <a class="text-dark" href="/app/public/home.html"> Friend
+                    Finder</a> </h1>
+            <hr>
+            <h2 class="text-center">Survey</h2>
+
+            <div class="card-body bg-secondary">
+                <form role="form">
+                    <div class="form-group">
+                        <h2>1- Strongly disagree; 5 Strongly agree. <small><a class="text-dark float-right"></a></small>
+                        </h2>
+                        <label for="q1">Question 1</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q2">Question 2</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q3">Question 3</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q4">Question 4</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q5">Question 5</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q6">Question 6</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q7">Question 7</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q8">Question 8</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q9">Question 9</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                    <div class="form-group">
+                        <label for="q10">Question 10</label>
+                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                    </div>
+                </form>
+            </div>
+
+            <button type="submit" class="btn btn-dark submit">Submit</button>
+
+            <footer class="footer">
+                <div class="container">
+                    <a href="/app/data/friends.js" class="text-dark">View Friends</a>
+                </div>
+            </footer>
+
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Friend Match</h4>
+                    <div class="divider"></div>
+                    <h5 id="userMatch"></h5>
+                    <img id="userMatchImage" class="materialboxed" width="650" src="">
+                </div>
+                <div class="modal-footer">
+                    <a href="/app/public/survey.html"
+                        class="modal-action modal-close waves-effect waves-green btn-flat">Try it agian</a>
+                </div>
+            </div>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').material_select();
+        $('.modal').modal({
+            dismissible: false,
+            opacity: .5,
+            inDuration: 300,
+            outDuration: 200,
+            startingTop: '4%',
+            endingTop: '10%'
+        });
+    });
+
+    $('#submitButton').on('click', function (event) {
+        event.preventDefault();
+        var userInput = {
+            scores: [
+                $("#q1").val().trim(),
+                $("#q2").val().trim(),
+                $("#q3").val().trim(),
+                $("#q4").val().trim(),
+                $("#q5").val().trim(),
+                $("#q6").val().trim(),
+                $("#q7").val().trim(),
+                $("#q8").val().trim(),
+                $("#q9").val().trim(),
+                $("#q10").val().trim()
+            ]
+        };
+
+        $.post('/api/friends', userInput)
+            .done(function (data) {
+                $('#userMatch').html(data.matchName);
+                $("#userMatchImage").attr("src", data.matchImage);
+                $('#modal1').modal('open');
+            });
+    });
+</script>
+
+
+</html>
