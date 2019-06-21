@@ -6,12 +6,12 @@ const friends = require('../data/friends.js');
 
 module.exports = function (app) {
 
-    app.get("app/friends", function (req, res) {
+    app.get("/app/friends", function (req, res) {
         res.json(friends);
     });
 
 
-    app.post("app/friends", function (req, res) {
+    app.post("/app/friends", function (req, res) {
         let userInput = req.body;
 
         let userResponses = userInput.scores;

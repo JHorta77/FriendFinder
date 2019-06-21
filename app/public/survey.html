@@ -121,12 +121,12 @@
             ]
         };
 
-        $.post("/app/friends", userInput)
-            .done(function (data) {
-                $("#userMatch").html(data.matchName);
-                $("#userMatchImage").attr("src", data.matchImage);
-                $("#modal1").modal("open");
-            });
+        $.post("/api/friends", userInput, function (data) {
+            $("#userMatch").html(data.matchName);
+            $("#userMatchImage").attr("src", data.matchImage);
+            $("#modal1").modal("open");
+        })
+
     });
 </script>
 
