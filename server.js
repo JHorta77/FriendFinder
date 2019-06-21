@@ -4,8 +4,6 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const PORT = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname, "/app/public")));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
