@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
     <title>Document</title>
 </head>
 
@@ -19,64 +22,64 @@
                 <a class="text-dark" href="/app/public/home.html"> Friend
                     Finder</a> </h1>
             <hr>
-            <h2 class="text-center">Survey</h2>
+            <h2 class="text-center">Top Gear Survey</h2>
 
             <div class="card-body bg-secondary">
                 <form role="form">
                     <div class="form-group">
                         <h2>1- Strongly disagree; 5 Strongly agree. <small><a class="text-dark float-right"></a></small>
                         </h2>
-                        <label for="q1">Question 1</label>
+                        <label for="q1">Do you consider yourself a fast driver</label>
                         <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q2">Question 2</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q2">Are you accident prone</label>
+                        <input type="number" class="form-control" value="3" id="q2" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q3">Question 3</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q3">Do you like the simple things</label>
+                        <input type="number" class="form-control" value="3" id="q3" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q4">Question 4</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q4">Can you execute a handbrake turn</label>
+                        <input type="number" class="form-control" value="3" id="q4" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q5">Question 5</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q5">Do you like camping</label>
+                        <input type="number" class="form-control" value="3" id="q5" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q6">Question 6</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q6">Do you like muscle cars</label>
+                        <input type="number" class="form-control" value="3" id="q6" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q7">Question 7</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q7">Are you a fan of F1</label>
+                        <input type="number" class="form-control" value="3" id="q7" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q8">Question 8</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q8">Do you like the classical music</label>
+                        <input type="number" class="form-control" value="3" id="q8" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q9">Question 9</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q9">Are you an organized person</label>
+                        <input type="number" class="form-control" value="3" id="q9" min=1 max=5>
                     </div>
                     <div class="form-group">
-                        <label for="q10">Question 10</label>
-                        <input type="number" class="form-control" value="3" id="q1" min=1 max=5>
+                        <label for="q10">Do you like to drink</label>
+                        <input type="number" class="form-control" value="3" id="q10" min=1 max=5>
                     </div>
                 </form>
             </div>
 
-            <button type="submit" class="btn btn-dark submit">Submit</button>
+            <button id="bsubmit" type="submit" class="btn btn-dark submit">Submit</button>
 
             <footer class="footer">
                 <div class="container">
-                    <a href="/app/data/friends.js" class="text-dark">View Friends</a>
+                    <a href="/api/data/friends.js" class="text-dark">View Friends</a>
                 </div>
             </footer>
 
-            <div id="modal1" class="modal">
+            <!-- <div id="modal1" class="modal">
                 <div class="modal-content">
                     <h4>Friend Match</h4>
                     <div class="divider"></div>
@@ -84,51 +87,78 @@
                     <img id="userMatchImage" class="materialboxed" width="650" src="">
                 </div>
                 <div class="modal-footer">
-                    <a href="/app/public/survey.html"
+                    <a href="/api/public/survey.html"
                         class="modal-action modal-close waves-effect waves-green btn-flat">Try it agian</a>
                 </div>
+            </div> -->
+            <div class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Friend Match</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Friend Match</h4>
+                            <div class="divider"></div>
+                            <h5 id="userMatch"></h5>
+                            <img id="userMatchImage" class="materialboxed" width="300" src="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="/api/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Try
+                        it agian</a>
+                </div>
             </div>
+        </div>
+    </div>
+    </div>
 
 </body>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('select').material_select();
-        $('.modal').modal({
-            dismissible: false,
-            opacity: .5,
-            inDuration: 300,
-            outDuration: 200,
-            startingTop: '4%',
-            endingTop: '10%'
-        });
+        // $('select').material_select();
+
+        // $('.modal').modal({
+        //     dismissible: false,
+        //     opacity: .5,
+        //     inDuration: 300,
+        //     outDuration: 200,
+        //     startingTop: '4%',
+        //     endingTop: '10%'
+        // });
     });
 
-    $('#submitButton').on('click', function (event) {
+    $('#bsubmit').on('click', function (event) {
         event.preventDefault();
+        console.log("button vlick test");
         var userInput = {
             scores: [
-                $("#q1").val().trim(),
-                $("#q2").val().trim(),
-                $("#q3").val().trim(),
-                $("#q4").val().trim(),
-                $("#q5").val().trim(),
-                $("#q6").val().trim(),
-                $("#q7").val().trim(),
-                $("#q8").val().trim(),
-                $("#q9").val().trim(),
-                $("#q10").val().trim()
+                $("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val(),
+                $("#q6").val(),
+                $("#q7").val(),
+                $("#q8").val(),
+                $("#q9").val(),
+                $("#q10").val(),
             ]
         };
-
+        console.log(userInput);
         $.post("/api/friends", userInput, function (data) {
-            $("#userMatch").html(data.matchName);
-            $("#userMatchImage").attr("src", data.matchImage);
-            $("#modal1").modal("open");
+            $("#userMatch").html(data.bestMatchName);
+            $("#userMatchImage").attr("src", data.bestMatchImage);
+            $(".modal").modal("toggle");
+            console.log("data", data)
         })
 
     });
 </script>
-
 
 </html>
