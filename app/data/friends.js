@@ -12,7 +12,7 @@ const friendsArry = [
             5,
             1,
             1,
-            5
+            1
         ]
     },
     {
@@ -28,7 +28,7 @@ const friendsArry = [
             3,
             1,
             3,
-            5
+            3
         ]
     },
     {
